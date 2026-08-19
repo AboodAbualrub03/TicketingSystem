@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TicketSystem.Infrastructure\TicketSystem.Infrastructure.csproj" />
+    <ProjectReference Include="..\TicktingSystem.Domain\TicktingSystem.Domain.csproj" />
   </ItemGroup>
 
 </Project>

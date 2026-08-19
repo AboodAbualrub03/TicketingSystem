@@ -1,4 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TicketSystem.Infrastructure.Repository;
+using TicktingSystem.Domain.Models;
+using TicktingSystem.Domain.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +16,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddIdentity<User,IdentityRole<int>>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders() ;
+builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
    
 var app = builder.Build();
 
