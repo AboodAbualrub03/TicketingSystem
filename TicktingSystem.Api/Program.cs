@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using TicketSystem.Infrastructure.Repository;
 using TicktingSystem.Domain.Models;
 using TicktingSystem.Domain.Repository;
-
+using MediatR;
+using TicktingSystem.Application.CQRS.Command;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -20,7 +21,9 @@ builder.Services.AddIdentity<User,IdentityRole<int>>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders() ;
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
-   
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssembly(typeof(CreateTicketCommand).Assembly));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

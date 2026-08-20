@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.30" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.30">
       <PrivateAssets>all</PrivateAssets>
@@ -17,11 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TicketSystem.Infrastructure\TicketSystem.Infrastructure.csproj" />
+    <ProjectReference Include="..\TicktingSystem.Application\TicktingSystem.Application.csproj" />
     <ProjectReference Include="..\TicktingSystem.Domain\TicktingSystem.Domain.csproj" />
   </ItemGroup>
 
